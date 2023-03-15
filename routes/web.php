@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ManagementUserController;
+use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\backend\DashboardController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -40,9 +42,18 @@ Route::get('user/1/destroy', [ManagementUserController::class, 'destroy']);
    // route yang beralamatkan  /home untuk menampilkan fungsi dari pemngembalian pada folder view dengan file home
    Route::get('/home', function(){
     return view('home');
+
  });
+
+ Route::get('LandingPage', [HomeController::class, 'index'])->name('home');
+
+Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 
 
 
     
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
